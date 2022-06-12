@@ -35,7 +35,7 @@ class UserService {
     await tokenService.save(userDto.id, tokens.refreshToken);
 
     return {
-      user: userDto,
+      user: createdUser,
       ...tokens
     };
   }

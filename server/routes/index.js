@@ -7,7 +7,10 @@ import authMiddlewares from "../middlewares/authMiddlewares.js";
 const router = Router();
 
 router.route('/logout').post(authController.logout);
-router.route('/login').post(authController.login);
+router.route('/login').post(
+  body('email').isEmail(),
+  authController.login
+  );
 router.route('/refresh').get(authController.refresh);
 router.route('/activate/:link').get(userController.activateUser);
 

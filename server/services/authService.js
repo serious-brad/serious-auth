@@ -57,7 +57,7 @@ class AuthService {
 
     return {
       ...tokens,
-      user: userData
+      user
     };
   }
 }

@@ -4,8 +4,8 @@ import Token from "../models/tokenModel.js";
 class TokenService {
   async generate(user) {
     return {
-      accessToken: jwt.sign(user, process.env.JWT_ACCESS_TOKEN, { expiresIn: '15m' }),
-      refreshToken: jwt.sign(user, process.env.JWT_REFRESH_TOKEN, { expiresIn: '1d' })
+      accessToken: jwt.sign(user, process.env.JWT_ACCESS_TOKEN, { expiresIn: '15s' }),
+      refreshToken: jwt.sign(user, process.env.JWT_REFRESH_TOKEN, { expiresIn: '30s' })
     }
   }
 
