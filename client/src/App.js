@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { observer } from "mobx-react-lite"
 import { Context } from "./store";
 
@@ -9,7 +9,7 @@ const App = () => {
     password: '',
     email: ''
   });
-  const { store } = useContext(Context);
+  const store = useContext(Context);
   const { loggedIn, user, users, isLoading } = store;
 
   if (isLoading) {
@@ -36,6 +36,7 @@ const App = () => {
         <button onClick={() => store.getLogin(currUser.email, currUser.password)}>
           login
         </button>
+
         <div>
           <p>For registration please enter first name and last name</p>
           <input
@@ -50,6 +51,7 @@ const App = () => {
             value={currUser.lastName}
             onChange={(e) => setCurrUser({ ...currUser, lastName: e.target.value })}
           />
+
           <button onClick={() => store.register(currUser)}>
             register
           </button>

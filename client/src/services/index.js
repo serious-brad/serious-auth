@@ -8,7 +8,7 @@ export async function login(email, password) {
 
     return res.data;
   } catch (error) {
-    console.error(error.response.data);
+    console.error(error?.response?.data);
   }
 }
 
@@ -18,7 +18,7 @@ export async function register(user) {
 
     return res.data;
   } catch (error) {
-    console.error(error.response.data);
+    console.error(error?.response?.data);
   }
 }
 
@@ -30,7 +30,7 @@ export async function refresh() {
 
     return res.data;
   } catch (error) {
-    console.error(error.response.data);
+    console.error(error?.response?.data);
   }
 }
 
@@ -40,7 +40,7 @@ export async function logout() {
 
     return res.data;
   } catch (error) {
-    console.error(error.response.data);
+    console.error(error?.response?.data);
   }
 }
 
@@ -50,6 +50,6 @@ export async function getUsers() {
 
     return response.data;
   } catch (error) {
-    console.error(error.response.data);
+    console.error(error?.response?.data);
   }
 }

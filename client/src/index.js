@@ -11,7 +11,7 @@ function Layout() {
   }, [])
 
   return (
-    <Context.Provider value={{ store }}>
+    <Context.Provider value={store}>
       <App />
     </Context.Provider>
   );

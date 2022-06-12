@@ -17,9 +17,8 @@ axi.interceptors.response.use((config) => {
 }, async (error) => {
   let originalRequest = error.config;
 
-  if (error.response.status === 401 && originalRequest && !originalRequest._isRetry) {
+  if (error.response.status === 401) {
     try {
-      originalRequest._isRetry = true;
       const res = await axios.get(`${baseURL}/refresh`, { withCredentials: true });
       localStorage.setItem('token', res.data.accessToken);
       return axi.request(originalRequest);

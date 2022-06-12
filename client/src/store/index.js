@@ -8,7 +8,7 @@ class Store {
   user = null;
   loggedIn = false;
   users = [];
-  isLoading = true;
+  isLoading = false;
 
   constructor() {
     makeAutoObservable(this)
@@ -70,7 +70,7 @@ class Store {
       this.setAuth(true);
       this.setUser(res.data.user);
     } catch (e) {
-      console.error(e.response.data);
+      console.error(e?.response?.data);
     } finally {
       this.setIsLoading(false);
     }
@@ -78,4 +78,4 @@ class Store {
 }
 
 export const store = new Store();
-export const Context = createContext({ store });
+export const Context = createContext(store);
