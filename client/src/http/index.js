@@ -9,18 +9,18 @@ const axi = axios.create({
 
 axi.interceptors.request.use((config) => {
   config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
+
   return config;
 });
 
-axi.interceptors.response.use((config) => {
-  return config;
-}, async (error) => {
+axi.interceptors.response.use((config) => config, async (error) => {
   let originalRequest = error.config;
 
   if (error.response.status === 401) {
     try {
       const res = await axios.get(`${baseURL}/refresh`, { withCredentials: true });
       localStorage.setItem('token', res.data.accessToken);
+
       return axi.request(originalRequest);
     } catch (e) {
       console.log(e)
@@ -28,7 +28,6 @@ axi.interceptors.response.use((config) => {
 
     throw error;
   }
-
 });
 
 export default axi;
